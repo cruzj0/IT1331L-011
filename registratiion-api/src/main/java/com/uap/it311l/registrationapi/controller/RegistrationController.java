@@ -1,7 +1,9 @@
 package com.uap.it311l.registrationapi.controller;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,5 +25,17 @@ public class RegistrationController {
 	@GetMapping("/attendees")
 	public Attendee[] getAttendees() {
 		return registrationRepo.findAll();
+	}
+	
+	@PutMapping("/event/survey/eligibility")
+	public Attendee[] markAsEligible() {
+		registrationRepo.markEligible();
+		return getAttendees();
+	}
+	
+	@DeleteMapping("/event/registration/{id}")
+	public String removeAttendee(@RequestBody String attendeeId) {
+		registrationRepo.delete(attendeeId);
+		return "record deleted.";
 	}
 }

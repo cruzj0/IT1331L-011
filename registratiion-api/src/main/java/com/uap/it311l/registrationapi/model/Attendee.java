@@ -7,6 +7,7 @@ public class Attendee {
 	String lastName;
 	String course;
 	int age;
+	boolean surveyEligibilityTag;
 	
 	public String getAttendeeId() {
 		return attendeeId;
@@ -43,5 +44,11 @@ public class Attendee {
 	}
 	public void setAge(int age) {
 		this.age = age;
+	}
+	public boolean getsurveyEligibilityTag() {
+		return surveyEligibilityTag;
+	}
+	public void setsurveyEligibilityTag(boolean surveyEligibilityTag) {
+		this.surveyEligibilityTag = surveyEligibilityTag;
 	}
 }
